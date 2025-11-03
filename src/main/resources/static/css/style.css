@@ -1,0 +1,89 @@
+/* Import Pokémon font */
+@import url('https://fonts.cdnfonts.com/css/pokemon-solid');
+
+/* General Layout */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #fddde6, #cce7ff); /* pastel pink-blue background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Pokédex Container */
+.pokedex-container {
+    background-color: #ffe6f2; /* soft pastel pink */
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.4);
+    width: 380px;
+    max-height: 85vh;
+    padding: 20px;
+    text-align: center;
+    border: 3px solid #ffb6c1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+/* Header */
+.header h1 {
+    margin-bottom: 10px;
+    font-family: 'Pokemon Solid', sans-serif;
+    color: #ffd700; /* golden yellow */
+    text-shadow: #110e0e 6px 6px;
+    font-size: 2.5rem;
+    line-height: 1.2em;
+}
+
+.header p {
+    margin: 0 0 10px 0;
+    font-size: 1em;
+    color: #ff69b4; /* bright pink subtitle */
+}
+
+/* Menu Buttons */
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.menu button {
+    background-color: ghostwhite;
+    border: 2px solid #ffb6c1;
+    border-radius: 10px;
+    padding: 12px;
+    width: 100%;
+    font-size: 0.95em;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Hover Effect */
+.menu button:hover {
+    background: linear-gradient(135deg, #ffb6c1, #ffe6f2, #cce7ff);
+    color: deepskyblue;
+    transform: scale(1.05);
+    border-color: transparent;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+/* Exit Button Styling (if needed) */
+.menu .exit-btn {
+    background-color: #ffc0cb;
+    border: 2px solid #ff69b4;
+    color: white;
+    font-weight: bold;
+}
+
+.menu .exit-btn:hover {
+    background: linear-gradient(135deg, #ff69b4, #ffb6c1, #ffe6f2);
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Pokémon</title>
+    <link rel="stylesheet" th:href="@{/css/add.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Add Pokémon</h1>
+
+    <div class="pokedex-screen">
+        <p th:text="${message != null ? message : 'Fill out the form to add a new Pokémon.'}"></p>
+    </div>
+
+    <div class="form-box">
+        <form th:action="@{/pokedex/add}" th:object="${pokemon}" method="post">
+            <label>PokeDex Number:</label>
+            <input type="number" th:field="*{dexNumber}" min="1" required>
+
+            <label>Name:</label>
+            <input type="text" th:field="*{name}" required>
+
+            <label>Region:</label>
+            <input type="text" th:field="*{region}" required>
+
+            <label>Primary Type:</label>
+            <input type="text" th:field="*{type1}" required>
+
+            <label>Secondary Type:</label>
+            <input type="text" th:field="*{type2}">
+
+            <label>Description:</label>
+            <textarea th:field="*{description}" required></textarea>
+
+            <label>Can This Pokémon Evolve?</label>
+            <select th:field="*{canEvolve}" required>
+                <option th:value="true">Yes</option>
+                <option th:value="false">No</option>
+            </select>
+
+            <button type="submit">Add Pokémon</button>
+        </form>
+        <a href="/pokedex/index"><button type="button">Return to Menu</button></a>
+    </div>
+</div>
+</body>
+</html>

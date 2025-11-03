@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Pokémon</title>
+    <link rel="stylesheet" th:href="@{/css/delete.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Delete Pokémon</h1>
+
+    <div class="pokedex-screen">
+        <p th:text="${message != null ? message : 'Enter the Dex Number of the Pokémon to release.'}"></p>
+    </div>
+
+    <div class="form-box">
+        <form th:action="@{/pokedex/delete}" method="post">
+            <label>Dex Number:</label>
+            <input type="number" name="dexNumber" min="1" required>
+
+            <label>Are you sure you want to release this Pokémon?</label>
+            <select name="confirm" required>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+
+            <button type="submit">Release Pokémon</button>
+        </form>
+        <a href="/pokedex/index"><button type="button">Return to Menu</button></a>
+    </div>
+</div>
+</body>
+</html>

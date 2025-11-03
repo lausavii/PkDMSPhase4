@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Who's That Pokémon?</title>
+    <link rel="stylesheet" th:href="@{/css/custom.css}">
+</head>
+<body>
+<h1>Who's That Pokémon?</h1>
+
+<div class="container">
+
+    <!-- Black screen for Pokémon output -->
+    <div class="pokedex-screen">
+        <div th:if="${pokemon != null}">
+            <div class="pokemon-display">
+                <div class="pokemon-image-container">
+                    <img th:src="@{/images/{name}.png(name=${pokemon.name})}"
+                         alt="Pokemon Image"
+                         class="pokemon-image">
+                </div>
+                <div class="pokemon-info">
+                    <h2 th:text="${pokemon.name} + ' #' + ${pokemon.dexNumber}"></h2>
+                    <p th:text="${pokemon.description}"></p>
+                    <div class="type-container">
+                        <span class="type-badge" th:text="${pokemon.type1}" th:classappend="${pokemon.type1.toLowerCase()}"></span>
+                        <span th:if="${pokemon.type2 != null && pokemon.type2 != ''}"
+                              class="type-badge" th:text="${pokemon.type2}" th:classappend="${pokemon.type2.toLowerCase()}"></span>
+                    </div>
+                    <!-- Message showing how many Pokémon of this type have been caught -->
+                    <p th:text="${message}" style="margin-top:10px; font-weight:bold;"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- If no Pokémon in Pokédex -->
+        <p th:if="${pokemon == null}" th:text="${message}"></p>
+    </div>
+
+    <!-- "Surprise Me!" button triggers server to reload the page with a random Pokémon -->
+    <form th:action="@{/pokedex/custom}" method="get">
+        <button type="submit">Surprise Me!</button>
+    </form>
+
+    <!-- Return button -->
+    <a th:href="@{/pokedex/index}"><button>Return to Menu</button></a>
+
+</div>
+</body>
+</html>

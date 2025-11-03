@@ -1,0 +1,116 @@
+@import url('https://fonts.cdnfonts.com/css/pokemon-solid');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #ffe6f0; /* soft Sailor Moon pink */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 4vh;
+    font-family: 'Pokemon Solid', sans-serif;
+    color: #ffcc00; /* Sailor Moon yellow */
+    text-shadow: #ff99ff 4px 4px;
+    font-size: 3rem;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --- Black screen for messages --- */
+.pokedex-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #ff99ff;
+    width: 30%;
+    min-height: 150px;
+    margin-bottom: 20px;
+}
+
+.pokedex-screen p {
+    margin: 5px 0;
+}
+
+/* --- Form container --- */
+.form-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffe6f0;
+    padding: 20px;
+    border-radius: 10px;
+    width: 30%;
+    box-shadow: 0 0 10px #ff99ff;
+}
+
+.pokemon-form,
+.form-box form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.pokemon-form label,
+.form-box label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.pokemon-form input,
+.pokemon-form textarea,
+.pokemon-form select,
+.form-box input,
+.form-box textarea,
+.form-box select {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #ff66a3;
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+    background-color: #ff99ff;
+}
+
+/* --- Responsive design --- */
+@media screen and (max-width: 700px) {
+    .pokedex-screen,
+    .form-box {
+        width: 90%;
+    }
+}
+
+@media screen and (min-width: 701px) and (max-width: 1100px) {
+    .pokedex-screen,
+    .form-box {
+        width: 50%;
+    }
+}

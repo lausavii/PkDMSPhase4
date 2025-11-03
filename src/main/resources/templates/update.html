@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Pokémon</title>
+    <link rel="stylesheet" th:href="@{/css/update.css}">
+</head>
+<body>
+<div class="container">
+
+    <h1>Update Pokémon</h1>
+
+    <!-- Black screen for messages -->
+    <div class="pokedex-screen">
+        <p th:text="${message}">Pokémon info will appear here.</p>
+    </div>
+
+    <!-- Step 1: Enter Dex Number -->
+    <div class="form-box">
+        <form th:action="@{/pokedex/update/search}" method="get">
+            <label>Enter the Dex Number of the Pokémon you want to update:</label>
+            <input type="number" name="dexNumber" min="1" required>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <!-- Step 2: Edit Pokémon fields -->
+    <div class="form-box" th:if="${pokemon != null}">
+        <form th:action="@{/pokedex/update}" th:object="${pokemon}" method="post">
+
+            <!-- Dex Number readonly -->
+            <label>Dex Number:</label>
+            <input type="number" th:field="*{dexNumber}" readonly>
+
+            <label>Name:</label>
+            <input type="text" th:field="*{name}" required>
+
+            <label>Region:</label>
+            <input type="text" th:field="*{region}" required>
+
+            <label>Primary Type:</label>
+            <input type="text" th:field="*{type1}" required>
+
+            <label>Secondary Type:</label>
+            <input type="text" th:field="*{type2}">
+
+            <label>Description:</label>
+            <textarea th:field="*{description}" required></textarea>
+
+            <label>Can This Pokémon Evolve?</label>
+            <select th:field="*{canEvolve}" required>
+                <option th:value="true">Yes</option>
+                <option th:value="false">No</option>
+            </select>
+
+            <button type="submit">Update Pokémon</button>
+        </form>
+    </div>
+
+    <!-- Return to menu -->
+    <a th:href="@{/pokedex/index}"><button>Return to Menu</button></a>
+</div>
+</body>
+</html>

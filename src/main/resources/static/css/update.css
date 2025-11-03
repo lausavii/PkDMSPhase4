@@ -1,0 +1,127 @@
+@import url('https://fonts.cdnfonts.com/css/pokemon-solid');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #ffe6f0; /* soft pink background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* vertical centering */
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Pokemon Solid', sans-serif;
+    color: #ffcc00;
+    text-shadow: #ff99ff 4px 4px;
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+/* Container holding black screen + form */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* space between screen and form */
+}
+
+/* Pokédex black screen */
+.pokedex-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #ff99ff;
+    width: 400px;
+    min-height: 200px;
+}
+
+.pokedex-screen h2 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.pokedex-screen p {
+    margin: 3px 0;
+}
+
+/* Form box */
+.form-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffe6f0; /* pink form */
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 0 10px #ff99ff;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+form label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+form input,
+form textarea,
+form select {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+form button {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background-color: #ff66a3;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+form button:hover {
+    background-color: #ff99ff;
+}
+
+p {
+    margin-top: 10px;
+    text-align: center;
+    color: #ff69b4;
+}
+button {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #ff66a3;
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+    background-color: #ff99ff;
+}

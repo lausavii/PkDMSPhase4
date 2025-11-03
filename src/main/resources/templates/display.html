@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Display Pokémon</title>
+    <link rel="stylesheet" th:href="@{/css/display.css}">
+</head>
+<body>
+<div class="pokedex-container">
+
+    <!-- Header -->
+    <div class="header">
+        <h1>LalaDex Pokémon Display</h1>
+        <p>Browse all Pokémon in your collection</p>
+    </div>
+
+    <!-- Scrollable Table -->
+    <div class="table-container">
+        <table class="pokemon-table">
+            <thead>
+            <tr>
+                <th>Image</th>
+                <th>PokeDex #</th>
+                <th>Name</th>
+                <th>Region</th>
+                <th>Type 1</th>
+                <th>Type 2</th>
+                <th>Description</th>
+                <th>Can Evolve?</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="pokemon : ${pokemons}">
+                <!-- Pokémon image on the left -->
+                <td>
+                    <img th:src="@{/images/{name}.png(name=${pokemon.name})}"
+                         onerror="this.onerror=null; this.src='/images/default.png';"
+                         alt="Pokemon Image"
+                         class="pokemon-image">
+                </td>
+                <td th:text="${pokemon.dexNumber}"></td>
+                <td th:text="${pokemon.name}"></td>
+                <td th:text="${pokemon.region}"></td>
+                <td>
+                    <span class="type-badge"
+                          th:text="${pokemon.type1}"
+                          th:classappend="${pokemon.type1.toLowerCase()}"></span>
+                </td>
+                <td>
+                    <span th:if="${pokemon.type2 != null && pokemon.type2 != ''}"
+                          class="type-badge"
+                          th:text="${pokemon.type2}"
+                          th:classappend="${pokemon.type2.toLowerCase()}"></span>
+                </td>
+                <td th:text="${pokemon.description}"></td>
+                <td th:text="${pokemon.canEvolve ? 'Yes' : 'No'}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Return to Menu -->
+    <a href="/pokedex/index"><button class="return-btn">Return to Menu</button></a>
+</div>
+</body>
+</html>
