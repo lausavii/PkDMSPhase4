@@ -2,30 +2,52 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Delete Pokémon</title>
+    <title>Release a Pokémon</title>
     <link rel="stylesheet" th:href="@{/css/delete.css}">
 </head>
 <body>
 <div class="container">
-    <h1>Delete Pokémon</h1>
+    <h1>Release a Pokémon</h1>
 
+    <!-- Pokédex black screen for messages -->
     <div class="pokedex-screen">
-        <p th:text="${message != null ? message : 'Enter the Dex Number of the Pokémon to release.'}"></p>
+        <p th:text="${message != null ? message : 'Select a Pokémon below to release.'}"></p>
     </div>
 
+    <!-- Pokémon list for deletion -->
     <div class="form-box">
-        <form th:action="@{/pokedex/delete}" method="post">
-            <label>Dex Number:</label>
-            <input type="number" name="dexNumber" min="1" required>
+        <table style="width:100%; border-collapse: collapse; text-align:center;">
+            <thead>
+            <tr style="background-color:#ffcc00; color:#000;">
+                <th>Dex #</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Region</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="p : ${pokemons}" style="background-color:#fff;">
+                <td th:text="${p.dexNumber}"></td>
+                <td th:text="${p.name}"></td>
 
-            <label>Are you sure you want to release this Pokémon?</label>
-            <select name="confirm" required>
-                <option value="true">Yes</option>
-                <option value="false">No</option>
-            </select>
+                <!-- Type badges -->
+                <td>
+                    <span class="type-badge" th:text="${p.type1}" th:classappend="${p.type1.toLowerCase()}"></span>
+                    <span class="type-badge" th:if="${p.type2 != null}" th:text="${p.type2}" th:classappend="${p.type2.toLowerCase()}"></span>
+                </td>
 
-            <button type="submit">Release Pokémon</button>
-        </form>
+                <td th:text="${p.region}"></td>
+
+                <td>
+                    <form th:action="@{/pokedex/delete/{id}(id=${p.dexNumber})}" method="post">
+                        <button type="submit">Release</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
         <a href="/pokedex/index"><button type="button">Return to Menu</button></a>
     </div>
 </div>

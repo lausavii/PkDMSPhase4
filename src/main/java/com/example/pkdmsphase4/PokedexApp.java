@@ -1,7 +1,6 @@
-package com.example.pkdmsphase3;
+package com.example.pkdmsphase4;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 //@SpringBootApplication
 public class PokedexApp {

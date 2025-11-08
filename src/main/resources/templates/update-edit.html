@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Pokémon</title>
+    <link rel="stylesheet" th:href="@{/css/update.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Edit Pokémon</h1>
+
+    <div class="pokedex-screen">
+        <p th:text="${message != null ? message : 'Edit the Pokémon below and click Update.'}"></p>
+    </div>
+
+    <div class="form-box">
+        <form th:action="@{/pokedex/update}" method="post" th:object="${wrapper}">
+            <table>
+                <thead>
+                <tr>
+                    <th>Pokedex #</th>
+                    <th>Name</th>
+                    <th>Region</th>
+                    <th>Primary Type</th>
+                    <th>Secondary Type</th>
+                    <th>Description</th>
+                    <th>Can This Pokémon Evolve?</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="p, iterStat : ${wrapper.pokemons}">
+                    <td>
+                        <input class="dexnumber-input" type="number" th:field="*{pokemons[__${iterStat.index}__].dexNumber}" readonly>
+                    </td>
+                    <td>
+                        <input type="text" th:field="*{pokemons[__${iterStat.index}__].name}">
+                    </td>
+                    <td>
+                        <input type="text" th:field="*{pokemons[__${iterStat.index}__].region}">
+                    </td>
+                    <td>
+                        <select class="type1-select" th:field="*{pokemons[__${iterStat.index}__].type1}" required>
+                            <option th:each="type : ${types}" th:value="${type}" th:text="${type}"
+                                    th:selected="${type == p.type1}"></option>
+                        </select>
+                    </td>
+                    <td>
+                        <select th:field="*{pokemons[__${iterStat.index}__].type2}">
+                            <option value="">None</option>
+                            <option th:each="type : ${types}" th:value="${type}" th:text="${type}"
+                                    th:selected="${type == p.type2}"></option>
+                        </select>
+                    </td>
+                    <td>
+                        <textarea th:field="*{pokemons[__${iterStat.index}__].description}"></textarea>
+                    </td>
+                    <td>
+                        <select  class="canevolve-select" th:field="*{pokemons[__${iterStat.index}__].canEvolve}">
+                            <option th:value="true" th:selected="${p.canEvolve}">Yes</option>
+                            <option th:value="false" th:selected="${!p.canEvolve}">No</option>
+                        </select>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <button type="submit">Update Pokémon</button>
+        </form>
+
+        <a th:href="@{/pokedex/index}"><button type="button">Return to Menu</button></a>
+    </div>
+</div>
+</body>
+</html>

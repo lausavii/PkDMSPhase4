@@ -1,5 +1,6 @@
 @import url('https://fonts.cdnfonts.com/css/pokemon-solid');
 
+/* --- Reset and base styles --- */
 * {
     margin: 0;
     padding: 0;
@@ -11,10 +12,12 @@ body {
     background-color: #ffe6f0; /* soft pink background */
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* vertical centering */
+    align-items: flex-start;
+    min-height: 100vh;
+    padding-top: 30px;
 }
 
+/* --- Headings --- */
 h1 {
     text-align: center;
     font-family: 'Pokemon Solid', sans-serif;
@@ -24,104 +27,163 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* Container holding black screen + form */
+/* --- Main container --- */
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px; /* space between screen and form */
+    gap: 20px;
+    width: 90%;
+    max-width: 900px;
 }
 
-/* Pokédex black screen */
+/* --- Black screen for messages --- */
 .pokedex-screen {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     background-color: #000000;
     color: #ffffff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 15px #ff99ff;
-    width: 400px;
-    min-height: 200px;
-}
-
-.pokedex-screen h2 {
-    font-size: 1.8rem;
-    margin-bottom: 5px;
+    width: 100%;
+    min-height: 100px;
+    text-align: center;
 }
 
 .pokedex-screen p {
-    margin: 3px 0;
+    margin: 5px 0;
 }
 
-/* Form box */
+/* --- Form box container --- */
 .form-box {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #ffe6f0; /* pink form */
+    background-color: #ffe6f0;
     padding: 20px;
     border-radius: 10px;
-    width: 400px;
+    width: 100%;
     box-shadow: 0 0 10px #ff99ff;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
+/* --- Table styles for Pokémon list --- */
+table {
     width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px #ff99ff;
+    margin-bottom: 15px;
 }
 
-form label {
-    margin-top: 10px;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #333;
+thead {
+    background-color: #ffcc00;
+    color: #000;
 }
 
-form input,
-form textarea,
-form select {
-    padding: 8px;
-    border-radius: 6px;
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #ffccff;
+}
+
+tr:nth-child(even) {
+    background-color: #fff5fa;
+}
+
+tr:hover {
+    background-color: #ffe0ef;
+    transition: background-color 0.2s;
+}
+.type1-select {
+    width: 120%;
+}
+
+.dexnumber-input, .canevolve-select{
+    width: 50%;
+}
+
+/* --- Input, textarea, select --- */
+input, textarea, select {
+    padding: 6px;
+    border-radius: 8px;
     border: 1px solid #ccc;
     width: 100%;
+    font-size: 0.95rem;
 }
 
-form button {
-    margin-top: 15px;
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-    background-color: #ff66a3;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.2s;
-}
 
-form button:hover {
-    background-color: #ff99ff;
-}
-
-p {
+/* --- Buttons --- */
+button, form button {
     margin-top: 10px;
-    text-align: center;
-    color: #ff69b4;
-}
-button {
-    margin-top: 15px;
     padding: 10px;
     border-radius: 8px;
+    border: none;
     background-color: #ff66a3;
     color: white;
-    border: none;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
 }
 
-button:hover {
+button:hover, form button:hover {
     background-color: #ff99ff;
 }
+
+a button {
+    width: 200px;
+    margin-top: 15px;
+}
+
+/* --- Type badges --- */
+.type-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    color: #fff;
+    font-weight: bold;
+    margin: 0 2px;
+}
+
+/* Type colors */
+.normal { background-color: #A8A77A; }
+.fire { background-color: #EE8130; }
+.water { background-color: #6390F0; }
+.electric { background-color: #F7D02C; color: #000; }
+.grass { background-color: #7AC74C; color: #000; }
+.ice { background-color: #96D9D6; color: #000; }
+.fighting { background-color: #C22E28; }
+.poison { background-color: #A33EA1; }
+.ground { background-color: #E2BF65; color: #000; }
+.flying { background-color: #A98FF3; }
+.psychic { background-color: #F95587; }
+.bug { background-color: #A6B91A; color: #000; }
+.rock { background-color: #B6A136; color: #000; }
+.ghost { background-color: #735797; }
+.dragon { background-color: #6F35FC; }
+.dark { background-color: #705746; }
+.steel { background-color: #B7B7CE; color: #000; }
+.fairy { background-color: #D685AD; }
+
+/* --- Responsive adjustments --- */
+@media screen and (max-width: 700px) {
+    .container, .form-box, table {
+        width: 100%;
+    }
+    th, td {
+        font-size: 0.85rem;
+        padding: 6px;
+    }
+}
+
+@media screen and (min-width: 701px) and (max-width: 1100px) {
+    .container, .form-box, table {
+        width: 90%;
+    }
+}
+

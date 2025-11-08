@@ -25,10 +25,15 @@
             <input type="text" th:field="*{region}" required>
 
             <label>Primary Type:</label>
-            <input type="text" th:field="*{type1}" required>
+            <select th:field="*{type1}" required>
+                <option th:each="type : ${types}" th:value="${type}" th:text="${type}"></option>
+            </select>
 
             <label>Secondary Type:</label>
-            <input type="text" th:field="*{type2}">
+            <select th:field="*{type2}">
+                <option value="">None</option>
+                <option th:each="type : ${types}" th:value="${type}" th:text="${type}"></option>
+            </select>
 
             <label>Description:</label>
             <textarea th:field="*{description}" required></textarea>
@@ -41,7 +46,8 @@
 
             <button type="submit">Add Pokémon</button>
         </form>
-        <a href="/pokedex/index"><button type="button">Return to Menu</button></a>
+
+        <a th:href="@{/pokedex/index}"><button type="button">Return to Menu</button></a>
     </div>
 </div>
 </body>
